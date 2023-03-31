@@ -8,6 +8,12 @@ namespace MarvelChallange.Service.Services
     {
         public async Task AddToFile(MarvelDto marvelDto)
         {
+            await Task.Run(() =>
+            {
+                if (File.Exists(AppSettings.FileName))
+                    File.Delete(AppSettings.FileName);
+            });
+
             using (StreamWriter sw = new StreamWriter(AppSettings.FileName, true))
             {
                 await sw.WriteLineAsync($"File generated in {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}");
