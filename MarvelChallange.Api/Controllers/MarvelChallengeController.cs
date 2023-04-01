@@ -16,7 +16,7 @@ namespace MarvelChallange.Api.Controllers
             MarvelService marvelSerice)
         {
             _logger = logger;
-            _marvelService = marvelSerice;        
+            _marvelService = marvelSerice;
         }
 
         /// <summary>
@@ -25,14 +25,33 @@ namespace MarvelChallange.Api.Controllers
         /// <returns>Returns the filled json object.</returns>
         [HttpGet]
         public async Task<ActionResult<MarvelDto>> Get()
-            => await _marvelService.GetFullData();
+        {
+            try
+            {
+                return Ok(await _marvelService.GetFullData());
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e);
+            }
+        }
 
         /// <summary>
         /// Writes id, name, description and name only reports for comics, series, stories and events to a text file.
         /// </summary>
         /// <returns></returns>
-        [HttpPost]
-        public async Task Post()
-            => await _marvelService.ImportData();
+        [HttpPost("import")]
+        public async Task<ActionResult<string>> Post()
+        {
+            try
+            {
+                await _marvelService.ImportData();
+                return Ok(new { message = "Generated text file." });
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e);
+            }            
+        }
     }
 }
