@@ -1,5 +1,5 @@
 using MarvelChallange.Domain.Models.External;
-using MarvelChallange.Service.Services.External;
+using MarvelChallange.Service.Services.External.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MarvelChallange.Api.Controllers
@@ -8,12 +8,12 @@ namespace MarvelChallange.Api.Controllers
     [Route("[controller]")]
     public class MarvelChallengeController : ControllerBase
     {
-        private readonly MarvelService _marvelService;
+        private readonly IMarvelService _marvelService;
         private readonly ILogger<MarvelChallengeController> _logger;
 
         public MarvelChallengeController(
             ILogger<MarvelChallengeController> logger,
-            MarvelService marvelSerice)
+            IMarvelService marvelSerice)
         {
             _logger = logger;
             _marvelService = marvelSerice;

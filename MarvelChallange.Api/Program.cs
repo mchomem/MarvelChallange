@@ -1,5 +1,6 @@
 using MarvelChallange.Service.Services;
 using MarvelChallange.Service.Services.External;
+using MarvelChallange.Service.Services.External.Interfaces;
 using MarvelChallange.Service.Services.Interfaces;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -60,6 +61,6 @@ static void SwaggerSetup(WebApplicationBuilder builder)
 
 static void DependenceInjectionSetup(WebApplicationBuilder builder)
 {
-    builder.Services.AddScoped(typeof(MarvelService));
+    builder.Services.AddScoped<IMarvelService, MarvelService>();
     builder.Services.AddScoped<IMarvelChallangeService, MarvelChallangeService>();
 }
