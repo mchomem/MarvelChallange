@@ -14,7 +14,7 @@ namespace MarvelChallange.Service.Services.External
 
         public async Task<MarvelDto?> GetFullData()
         {
-            string result = await Get($"{AppSettings.ExternalServices.MarvelApi.UrlBase}/v1/public/characters?apikey={AppSettings.ExternalServices.MarvelApi.Apikey}&ts={AppSettings.ExternalServices.MarvelApi.Timestamp}&hash={AppSettings.ExternalServices.MarvelApi.Hash}");
+            string result = await SendRequest($"{AppSettings.ExternalServices.MarvelApi.UrlBase}/v1/public/characters?apikey={AppSettings.ExternalServices.MarvelApi.Apikey}&ts={AppSettings.ExternalServices.MarvelApi.Timestamp}&hash={AppSettings.ExternalServices.MarvelApi.Hash}");
             MarvelDto? marvelJson = JsonSerializer.Deserialize<MarvelDto>(result);
 
             return marvelJson ?? null;

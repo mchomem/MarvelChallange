@@ -4,7 +4,7 @@
     {
         public ExternalBaseService() { }
 
-        public async Task<string> Get(string url)
+        public async Task<string> SendRequest(string url)
         {
             var httpClient = new HttpClient();
             var request = new HttpRequestMessage(HttpMethod.Get, url);
