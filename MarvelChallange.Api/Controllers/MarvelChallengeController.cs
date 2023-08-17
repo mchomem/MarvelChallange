@@ -40,12 +40,12 @@ namespace MarvelChallange.Api.Controllers
         /// Writes id, name, description and name only reports for comics, series, stories and events to a text file.
         /// </summary>
         /// <returns></returns>
-        [HttpPost("import")]
+        [HttpPost("export-to-file")]
         public async Task<ActionResult<string>> Post()
         {
             try
             {
-                await _marvelService.ImportData();
+                await _marvelService.ExportDataToFile();
                 return Ok(new { message = "Generated text file." });
             }
             catch (Exception e)

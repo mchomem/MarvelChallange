@@ -8,9 +8,13 @@ namespace MarvelChallange.Service.Services
     {
         public async Task AddToFile(MarvelDto marvelDto)
         {
-            DateTime dateTimeNow = DateTime.Now;
-            
-            string fullFileName = $"{AppSettings.FileName}.{dateTimeNow.ToString("dd.MM.yyyy HH.mm.ss")}.{AppSettings.FileExtension}";
+            DateTime dateTimeNow = DateTime.Now;            
+            string fullFileName = $"{AppSettings.FileExportData.FileOutputDirectory}/{AppSettings.FileExportData.FileName}.{dateTimeNow.ToString("dd.MM.yyyy HH.mm.ss")}.{AppSettings.FileExportData.FileExtension}";
+
+            await Task.Run(() => {
+                if (!Directory.Exists(AppSettings.FileExportData.FileOutputDirectory))
+                    Directory.CreateDirectory(AppSettings.FileExportData.FileOutputDirectory);
+            });
 
             using (StreamWriter sw = new StreamWriter(fullFileName, true))
             {

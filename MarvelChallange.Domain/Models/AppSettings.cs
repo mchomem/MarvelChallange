@@ -15,9 +15,14 @@ namespace MarvelChallange.Domain.Models
             }
         }
 
-        public static string FileName { get => GetValueFromKey("FileName"); }
+        public static class FileExportData
+        {
+            public static string FileName { get => GetValueFromKey("FileExportData:FileName"); }
 
-        public static string FileExtension { get => GetValueFromKey("FileExtension"); }
+            public static string FileExtension { get => GetValueFromKey("FileExportData:FileExtension"); }
+
+            public static string FileOutputDirectory { get => GetValueFromKey("FileExportData:FileOutputDirectory"); }
+        }
 
         private static string GetValueFromKey(string key) => GetAppSettings().GetSection(key).Value;
 
