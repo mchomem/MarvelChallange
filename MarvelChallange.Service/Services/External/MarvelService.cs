@@ -31,5 +31,16 @@ namespace MarvelChallange.Service.Services.External
 
             await _marvelChallangeService.AddToFile(marvelJson);
         }
+
+        public async Task DeleteAllFiles()
+        {
+            await Task.Run(() =>
+            {
+                string fullPath = AppSettings.FileExportData.FileOutputDirectory;
+
+                if (Directory.Exists(fullPath))
+                    Directory.Delete(fullPath, true);
+            });
+        }
     }
 }

@@ -7,5 +7,7 @@ namespace MarvelChallange.Service.Services.External.Interfaces
         public Task<MarvelDto?> GetFullData();
 
         public Task ExportDataToFile();
+
+        public Task DeleteAllFiles();
     }
 }

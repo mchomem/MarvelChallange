@@ -28,10 +28,12 @@ namespace MarvelChallange.Api.Controllers
         {
             try
             {
+                _logger.LogInformation($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: GET method. Action taken.");
                 return Ok(await _marvelService.GetFullData());
             }
             catch (Exception e)
             {
+                _logger.LogError($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: GET method. Action taken. ERROR: {e.Message}");
                 return StatusCode(500, e.Message);
             }
         }
@@ -46,12 +48,30 @@ namespace MarvelChallange.Api.Controllers
             try
             {
                 await _marvelService.ExportDataToFile();
+                _logger.LogInformation($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: POST method. Action taken.");
                 return Ok(new { message = "Generated text file." });
             }
             catch (Exception e)
             {
+                _logger.LogError($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: GET method. Action taken. ERROR: {e.Message}");
                 return StatusCode(500, e.Message);
             }            
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult> Delete()
+        {
+            try
+            {
+                _logger.LogInformation($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: DELETE method. Action taken.");
+                await _marvelService.DeleteAllFiles();
+                return Ok(new { message = "Export files excluded." });
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: DELETE method. Action taken. ERROR: {e.Message}");
+                return StatusCode(500, e.Message);
+            }
         }
     }
 }
