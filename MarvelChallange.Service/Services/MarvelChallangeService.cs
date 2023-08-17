@@ -8,15 +8,13 @@ namespace MarvelChallange.Service.Services
     {
         public async Task AddToFile(MarvelDto marvelDto)
         {
-            await Task.Run(() =>
-            {
-                if (File.Exists(AppSettings.FileName))
-                    File.Delete(AppSettings.FileName);
-            });
+            DateTime dateTimeNow = DateTime.Now;
+            
+            string fullFileName = $"{AppSettings.FileName}.{dateTimeNow.ToString("dd.MM.yyyy HH.mm.ss")}.{AppSettings.FileExtension}";
 
-            using (StreamWriter sw = new StreamWriter(AppSettings.FileName, true))
+            using (StreamWriter sw = new StreamWriter(fullFileName, true))
             {
-                await sw.WriteLineAsync($"File generated in {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}");
+                await sw.WriteLineAsync($"File generated in {dateTimeNow.ToString("dd/MM/yyyy HH:mm:ss")}");
                 await sw.WriteLineAsync("");
 
                 foreach (MarvelResultDto result in marvelDto.Data.Results)
@@ -28,19 +26,19 @@ namespace MarvelChallange.Service.Services
                     await sw.WriteLineAsync($"Description: {result.Description}");
 
                     await sw.WriteLineAsync("Comics (names):");
-                    await Task.Run(() => result.Comics.Items.ForEach(x => sw.WriteLine($"\t{x.Name}")) );
+                    await Task.Run(() => result.Comics.Items.ForEach(x => sw.WriteLine($"\t{x.Name}")));
                     await sw.WriteLineAsync("");
 
                     await sw.WriteLineAsync($"Series (names):");
-                    await Task.Run(() => result.Series.Items.ForEach(x => sw.WriteLine($"\t{x.Name}")) );
+                    await Task.Run(() => result.Series.Items.ForEach(x => sw.WriteLine($"\t{x.Name}")));
                     await sw.WriteLineAsync("");
 
                     await sw.WriteLineAsync($"Stories (names):");
-                    await Task.Run(() => result.Stories.Items.ForEach(x => sw.WriteLine($"\t{x.Name}")) );
+                    await Task.Run(() => result.Stories.Items.ForEach(x => sw.WriteLine($"\t{x.Name}")));
                     await sw.WriteLineAsync("");
 
                     await sw.WriteLineAsync($"Events (names):");
-                    await Task.Run(() => result.Events.Items.ForEach(x => sw.WriteLine($"\t{x.Name}")) );
+                    await Task.Run(() => result.Events.Items.ForEach(x => sw.WriteLine($"\t{x.Name}")));
                     await sw.WriteLineAsync("");
 
                     await sw.WriteLineAsync(string.Empty.PadRight(maxSeparator, '='));

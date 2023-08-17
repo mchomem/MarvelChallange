@@ -32,7 +32,7 @@ namespace MarvelChallange.Api.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode(500, e);
+                return StatusCode(500, e.Message);
             }
         }
 
@@ -50,7 +50,7 @@ namespace MarvelChallange.Api.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode(500, e);
+                return StatusCode(500, e.Message);
             }            
         }
     }

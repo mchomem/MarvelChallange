@@ -17,6 +17,8 @@ namespace MarvelChallange.Domain.Models
 
         public static string FileName { get => GetValueFromKey("FileName"); }
 
+        public static string FileExtension { get => GetValueFromKey("FileExtension"); }
+
         private static string GetValueFromKey(string key) => GetAppSettings().GetSection(key).Value;
 
         private static IConfigurationRoot GetAppSettings()
