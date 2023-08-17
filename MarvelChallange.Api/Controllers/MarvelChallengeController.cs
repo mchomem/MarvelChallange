@@ -58,6 +58,10 @@ namespace MarvelChallange.Api.Controllers
             }            
         }
 
+        /// <summary>
+        /// Delete all exported files.
+        /// </summary>
+        /// <returns></returns>
         [HttpDelete]
         public async Task<ActionResult> Delete()
         {
