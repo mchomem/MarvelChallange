@@ -22,14 +22,14 @@ namespace MarvelChallange.Service.Services.External
             return marvelJson ?? null;
         }
 
-        public async Task ExportDataToFile()
+        public async Task<string> ExportDataToFile()
         {
             MarvelDto? marvelJson = await GetFullData();
 
             if (marvelJson == null)
                 throw new Exception("No data to export");
 
-            await _marvelChallangeService.AddToFile(marvelJson);
+            return await _marvelChallangeService.AddToFile(marvelJson);
         }
 
         public async Task DeleteAllFiles()

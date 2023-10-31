@@ -6,7 +6,7 @@ namespace MarvelChallange.Service.Services
 {
     public class MarvelChallangeService : IMarvelChallangeService
     {
-        public async Task AddToFile(MarvelDto marvelDto)
+        public async Task<string> AddToFile(MarvelDto marvelDto)
         {
             DateTime dateTimeNow = DateTime.Now;            
             string fullFileName = $"{AppSettings.FileExportData.FileOutputDirectory}/{AppSettings.FileExportData.FileName}.{dateTimeNow.ToString("dd.MM.yyyy HH.mm.ss")}.{AppSettings.FileExportData.FileExtension}";
@@ -49,6 +49,8 @@ namespace MarvelChallange.Service.Services
                     await sw.WriteLineAsync("");
                 }
             }
+
+            return fullFileName;
         }
     }
 }

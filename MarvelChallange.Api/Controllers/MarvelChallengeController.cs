@@ -47,9 +47,9 @@ namespace MarvelChallange.Api.Controllers
         {
             try
             {
-                await _marvelService.ExportDataToFile();
+                string fullPath = await _marvelService.ExportDataToFile();
                 _logger.LogInformation($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: POST method. Action taken.");
-                return Ok(new { message = "Generated text file." });
+                return Ok(new { message = $"Generated text file at {fullPath}" });
             }
             catch (Exception e)
             {
@@ -69,7 +69,7 @@ namespace MarvelChallange.Api.Controllers
             {
                 _logger.LogInformation($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: DELETE method. Action taken.");
                 await _marvelService.DeleteAllFiles();
-                return Ok(new { message = "Export files excluded." });
+                return Ok(new { message = "Export files deleted." });
             }
             catch (Exception e)
             {
