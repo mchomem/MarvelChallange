@@ -1,7 +1,3 @@
-using MarvelChallange.Domain.Models.External;
-using MarvelChallange.Service.Services.External.Interfaces;
-using Microsoft.AspNetCore.Mvc;
-
 namespace MarvelChallange.Api.Controllers
 {
     [ApiController]

@@ -1,10 +1,4 @@
-﻿using MarvelChallange.Domain.Models;
-using MarvelChallange.Domain.Models.External;
-using MarvelChallange.Service.Services.External.Interfaces;
-using MarvelChallange.Service.Services.Interfaces;
-using System.Text.Json;
-
-namespace MarvelChallange.Service.Services.External
+﻿namespace MarvelChallange.Service.Services.External
 {
     public class MarvelService : ExternalBaseService, IMarvelService
     {

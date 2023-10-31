@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-
-namespace MarvelChallange.Domain.Models
+﻿namespace MarvelChallange.Domain.Models
 {
     public static class AppSettings
     {

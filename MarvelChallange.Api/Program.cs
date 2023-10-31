@@ -1,10 +1,3 @@
-using MarvelChallange.Service.Services;
-using MarvelChallange.Service.Services.External;
-using MarvelChallange.Service.Services.External.Interfaces;
-using MarvelChallange.Service.Services.Interfaces;
-using Microsoft.OpenApi.Models;
-using System.Reflection;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

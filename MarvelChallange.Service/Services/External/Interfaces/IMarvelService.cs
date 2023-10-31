@@ -1,6 +1,4 @@
-﻿using MarvelChallange.Domain.Models.External;
-
-namespace MarvelChallange.Service.Services.External.Interfaces
+﻿namespace MarvelChallange.Service.Services.External.Interfaces
 {
     public interface IMarvelService
     {

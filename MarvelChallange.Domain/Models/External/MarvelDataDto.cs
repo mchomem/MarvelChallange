@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace MarvelChallange.Domain.Models.External
+﻿namespace MarvelChallange.Domain.Models.External
 {
     [Serializable]
     public class MarvelDataDto
