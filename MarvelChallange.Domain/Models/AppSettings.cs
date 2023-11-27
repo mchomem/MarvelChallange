@@ -26,17 +26,15 @@
 
         private static IConfigurationRoot GetAppSettings()
         {
-            try
-            {
-                IConfigurationBuilder builder = new ConfigurationBuilder();
-                builder.AddJsonFile(Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json"));
-                IConfigurationRoot root = builder.Build();
-                return root;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            IConfigurationBuilder builder = new ConfigurationBuilder();
+            var appSettingFile = Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json");
+
+            if (!File.Exists(appSettingFile))
+                throw new Exception("appsettings.json file not found in project.");
+
+            builder.AddJsonFile(appSettingFile);
+            IConfigurationRoot root = builder.Build();
+            return root;
         }
     }
 }
