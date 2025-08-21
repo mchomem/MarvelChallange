@@ -23,7 +23,8 @@ public class MarvelChallengeController : ControllerBase
         try
         {
             _logger.LogInformation($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: GET method. Action taken.");
-            return Ok(await _marvelService.GetFullData());
+            var marvelDto = await _marvelService.GetFullData();
+            return Ok(marvelDto);
         }
         catch (Exception e)
         {
@@ -43,7 +44,8 @@ public class MarvelChallengeController : ControllerBase
         {
             string fullPath = await _marvelService.ExportDataToFile();
             _logger.LogInformation($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: POST method. Action taken.");
-            return Ok(new { message = $"Generated text file at {fullPath}" });
+            var message = new { message = $"Generated text file at {fullPath}" };
+            return Ok(message);
         }
         catch (Exception e)
         {

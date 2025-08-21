@@ -23,7 +23,7 @@ public class MarvelService : ExternalBaseService, IMarvelService
         MarvelDto? marvelJson = await GetFullData();
 
         if (marvelJson == null)
-            throw new Exception("No data to export");
+            throw new MarvelException("No data to export");
 
         return await _marvelChallangeService.AddToFile(marvelJson);
     }
