@@ -1,10 +1,45 @@
 ﻿namespace MarvelChallange.Core.Application.Services;
 
-public class MarvelChallangeService : IMarvelChallangeService
+public class MarvelService : IMarvelService
 {
-    public async Task<string> AddToFile(MarvelDto marvelDto)
+    private readonly IMarvelApiClient _marvelApiClient;
+
+    public MarvelService(IMarvelApiClient marvelApiClient)
     {
-        DateTime dateTimeNow = DateTime.Now;            
+        _marvelApiClient = marvelApiClient;
+    }
+
+    public async Task<MarvelDto> GetFullDataAsync()
+    {
+        var marvelDto = await _marvelApiClient.GetFullDataAsync();
+        return marvelDto;
+    }
+
+    public async Task<string> ExportDataToFileAsync()
+    {
+        MarvelDto marvelJson = await GetFullDataAsync();
+
+        if (marvelJson is null)
+            throw new MarvelException("No data to export");
+
+        var result = await AddToFileAsync(marvelJson);
+        return result;
+    }
+
+    public async Task DeleteAllFilesAsync()
+    {
+        await Task.Run(() =>
+        {
+            string fullPath = AppSettings.FileExportData.FileOutputDirectory;
+
+            if (Directory.Exists(fullPath))
+                Directory.Delete(fullPath, true);
+        });
+    }
+
+    public async Task<string> AddToFileAsync(MarvelDto marvelDto)
+    {
+        DateTime dateTimeNow = DateTime.Now;
         string fullFileName = $"{AppSettings.FileExportData.FileOutputDirectory}/{AppSettings.FileExportData.FileName}.{dateTimeNow.ToString("dd.MM.yyyy HH.mm.ss")}.{AppSettings.FileExportData.FileExtension}";
 
         await Task.Run(() =>

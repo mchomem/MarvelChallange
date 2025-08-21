@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarvelChallange.Core.Applic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarvelChallange.Infrastructure.IoC", "MarvelChallange.Infrastructure.IoC\MarvelChallange.Infrastructure.IoC.csproj", "{6AA82415-14E2-4E91-A8E7-F310E91994FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarvelChallange.Infrastructure.ExternalService", "MarvelChallange.Infrastructure.ExternalService\MarvelChallange.Infrastructure.ExternalService.csproj", "{DA4051E8-1A50-40B5-9956-EA1A90DB4A04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6AA82415-14E2-4E91-A8E7-F310E91994FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AA82415-14E2-4E91-A8E7-F310E91994FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AA82415-14E2-4E91-A8E7-F310E91994FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA4051E8-1A50-40B5-9956-EA1A90DB4A04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA4051E8-1A50-40B5-9956-EA1A90DB4A04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA4051E8-1A50-40B5-9956-EA1A90DB4A04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA4051E8-1A50-40B5-9956-EA1A90DB4A04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{E3DB8DF7-7511-4461-8A48-8EF0CA305A76} = {480840E4-E22C-47D4-B853-CA77AA136F32}
 		{3B97B94E-C973-4F9F-AD6F-ECC1F47D3BCE} = {480840E4-E22C-47D4-B853-CA77AA136F32}
 		{6AA82415-14E2-4E91-A8E7-F310E91994FC} = {CCC3AF6E-AD27-4F95-9C19-6E258267918D}
+		{DA4051E8-1A50-40B5-9956-EA1A90DB4A04} = {CCC3AF6E-AD27-4F95-9C19-6E258267918D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F1AA1C98-C2FB-4953-9B24-2ECC232DED86}

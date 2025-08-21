@@ -18,12 +18,13 @@ public class MarvelChallengeController : ControllerBase
     /// </summary>
     /// <returns>Returns the filled json object.</returns>
     [HttpGet]
-    public async Task<ActionResult<MarvelDto>> Get()
+    public async Task<ActionResult<MarvelDto>> GetAsync()
     {
         try
         {
             _logger.LogInformation($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: GET method. Action taken.");
-            var marvelDto = await _marvelService.GetFullData();
+            var marvelDto = await _marvelService.GetFullDataAsync();
+
             return Ok(marvelDto);
         }
         catch (Exception e)
@@ -38,11 +39,11 @@ public class MarvelChallengeController : ControllerBase
     /// </summary>
     /// <returns></returns>
     [HttpPost("export-to-file")]
-    public async Task<ActionResult<string>> Post()
+    public async Task<ActionResult<string>> PostAsync()
     {
         try
         {
-            string fullPath = await _marvelService.ExportDataToFile();
+            string fullPath = await _marvelService.ExportDataToFileAsync();
             _logger.LogInformation($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: POST method. Action taken.");
             var message = new { message = $"Generated text file at {fullPath}" };
             return Ok(message);
@@ -59,12 +60,12 @@ public class MarvelChallengeController : ControllerBase
     /// </summary>
     /// <returns></returns>
     [HttpDelete]
-    public async Task<ActionResult> Delete()
+    public async Task<ActionResult> DeleteAsync()
     {
         try
         {
             _logger.LogInformation($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: DELETE method. Action taken.");
-            await _marvelService.DeleteAllFiles();
+            await _marvelService.DeleteAllFilesAsync();
             return Ok(new { message = "Export files deleted." });
         }
         catch (Exception e)

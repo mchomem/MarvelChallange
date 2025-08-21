@@ -7,7 +7,16 @@ public static class DependenceInjectionApi
         #region Services
 
         services.AddScoped<IMarvelService, MarvelService>();
-        services.AddScoped<IMarvelChallangeService, MarvelChallangeService>();
+
+        #endregion
+
+        #region External Services
+
+        services.AddHttpClient<IMarvelApiClient, MarvelApiClient>(client =>
+        {
+            client.BaseAddress = new Uri(AppSettings.ExternalServices.MarvelApi.UrlBase);
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+        });
 
         #endregion
 

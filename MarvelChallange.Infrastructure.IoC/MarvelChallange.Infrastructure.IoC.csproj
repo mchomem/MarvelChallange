@@ -25,6 +25,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\MarvelChallange.Core.Application\MarvelChallange.Core.Application.csproj" />
+		<ProjectReference Include="..\MarvelChallange.Infrastructure.ExternalService\MarvelChallange.Infrastructure.ExternalService.csproj" />
 	</ItemGroup>
 
 </Project>
