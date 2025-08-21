@@ -1,77 +1,74 @@
-namespace MarvelChallange.Api.Controllers
+namespace MarvelChallange.Api.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class MarvelChallengeController : ControllerBase
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class MarvelChallengeController : ControllerBase
+    private readonly IMarvelService _marvelService;
+    private readonly ILogger<MarvelChallengeController> _logger;
+
+    public MarvelChallengeController(ILogger<MarvelChallengeController> logger, IMarvelService marvelSerice)
     {
-        private readonly IMarvelService _marvelService;
-        private readonly ILogger<MarvelChallengeController> _logger;
+        _logger = logger;
+        _marvelService = marvelSerice;
+    }
 
-        public MarvelChallengeController(
-            ILogger<MarvelChallengeController> logger,
-            IMarvelService marvelSerice)
+    /// <summary>
+    /// Get all character data from marvel api.
+    /// </summary>
+    /// <returns>Returns the filled json object.</returns>
+    [HttpGet]
+    public async Task<ActionResult<MarvelDto>> Get()
+    {
+        try
         {
-            _logger = logger;
-            _marvelService = marvelSerice;
+            _logger.LogInformation($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: GET method. Action taken.");
+            return Ok(await _marvelService.GetFullData());
         }
-
-        /// <summary>
-        /// Get all character data from marvel api.
-        /// </summary>
-        /// <returns>Returns the filled json object.</returns>
-        [HttpGet]
-        public async Task<ActionResult<MarvelDto>> Get()
+        catch (Exception e)
         {
-            try
-            {
-                _logger.LogInformation($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: GET method. Action taken.");
-                return Ok(await _marvelService.GetFullData());
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: GET method. Action taken. ERROR: {e.Message}");
-                return StatusCode(500, e.Message);
-            }
+            _logger.LogError($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: GET method. Action taken. ERROR: {e.Message}");
+            return StatusCode(500, e.Message);
         }
+    }
 
-        /// <summary>
-        /// Writes id, name, description and name only reports for comics, series, stories and events to a text file.
-        /// </summary>
-        /// <returns></returns>
-        [HttpPost("export-to-file")]
-        public async Task<ActionResult<string>> Post()
+    /// <summary>
+    /// Writes id, name, description and name only reports for comics, series, stories and events to a text file.
+    /// </summary>
+    /// <returns></returns>
+    [HttpPost("export-to-file")]
+    public async Task<ActionResult<string>> Post()
+    {
+        try
         {
-            try
-            {
-                string fullPath = await _marvelService.ExportDataToFile();
-                _logger.LogInformation($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: POST method. Action taken.");
-                return Ok(new { message = $"Generated text file at {fullPath}" });
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: GET method. Action taken. ERROR: {e.Message}");
-                return StatusCode(500, e.Message);
-            }            
+            string fullPath = await _marvelService.ExportDataToFile();
+            _logger.LogInformation($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: POST method. Action taken.");
+            return Ok(new { message = $"Generated text file at {fullPath}" });
         }
-
-        /// <summary>
-        /// Delete all exported files.
-        /// </summary>
-        /// <returns></returns>
-        [HttpDelete]
-        public async Task<ActionResult> Delete()
+        catch (Exception e)
         {
-            try
-            {
-                _logger.LogInformation($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: DELETE method. Action taken.");
-                await _marvelService.DeleteAllFiles();
-                return Ok(new { message = "Export files deleted." });
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: DELETE method. Action taken. ERROR: {e.Message}");
-                return StatusCode(500, e.Message);
-            }
+            _logger.LogError($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: GET method. Action taken. ERROR: {e.Message}");
+            return StatusCode(500, e.Message);
+        }
+    }
+
+    /// <summary>
+    /// Delete all exported files.
+    /// </summary>
+    /// <returns></returns>
+    [HttpDelete]
+    public async Task<ActionResult> Delete()
+    {
+        try
+        {
+            _logger.LogInformation($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: DELETE method. Action taken.");
+            await _marvelService.DeleteAllFiles();
+            return Ok(new { message = "Export files deleted." });
+        }
+        catch (Exception e)
+        {
+            _logger.LogError($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: DELETE method. Action taken. ERROR: {e.Message}");
+            return StatusCode(500, e.Message);
         }
     }
 }

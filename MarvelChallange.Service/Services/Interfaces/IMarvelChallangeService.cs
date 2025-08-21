@@ -1,7 +1,6 @@
-﻿namespace MarvelChallange.Service.Services.Interfaces
+﻿namespace MarvelChallange.Service.Services.Interfaces;
+
+public interface IMarvelChallangeService
 {
-    public interface IMarvelChallangeService
-    {
-        public Task<string> AddToFile(MarvelDto marvelDto);
-    }
+    public Task<string> AddToFile(MarvelDto marvelDto);
 }

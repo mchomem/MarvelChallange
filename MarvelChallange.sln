@@ -5,15 +5,17 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarvelChallange.Api", "MarvelChallange.Api\MarvelChallange.Api.csproj", "{535BD175-7FA3-4CF0-8C48-5B9ED61C6268}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Application", "1 - Application", "{4EEFDA2C-011C-4925-9A3E-D84EDC240534}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Presentation", "3 - Presentation", "{4EEFDA2C-011C-4925-9A3E-D84EDC240534}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain", "2 - Domain", "{CCC3AF6E-AD27-4F95-9C19-6E258267918D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Infrastructure", "2 - Infrastructure", "{CCC3AF6E-AD27-4F95-9C19-6E258267918D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Service", "3 - Service", "{480840E4-E22C-47D4-B853-CA77AA136F32}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Core", "2 - Core", "{480840E4-E22C-47D4-B853-CA77AA136F32}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarvelChallange.Domain", "MarvelChallange.Domain\MarvelChallange.Domain.csproj", "{E3DB8DF7-7511-4461-8A48-8EF0CA305A76}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarvelChallange.Service", "MarvelChallange.Service\MarvelChallange.Service.csproj", "{3B97B94E-C973-4F9F-AD6F-ECC1F47D3BCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarvelChallange.Infrastructure.IoC", "MarvelChallange.Infrastructure.IoC\MarvelChallange.Infrastructure.IoC.csproj", "{6AA82415-14E2-4E91-A8E7-F310E91994FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,14 +35,19 @@ Global
 		{3B97B94E-C973-4F9F-AD6F-ECC1F47D3BCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B97B94E-C973-4F9F-AD6F-ECC1F47D3BCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B97B94E-C973-4F9F-AD6F-ECC1F47D3BCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AA82415-14E2-4E91-A8E7-F310E91994FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AA82415-14E2-4E91-A8E7-F310E91994FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AA82415-14E2-4E91-A8E7-F310E91994FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AA82415-14E2-4E91-A8E7-F310E91994FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{535BD175-7FA3-4CF0-8C48-5B9ED61C6268} = {4EEFDA2C-011C-4925-9A3E-D84EDC240534}
-		{E3DB8DF7-7511-4461-8A48-8EF0CA305A76} = {CCC3AF6E-AD27-4F95-9C19-6E258267918D}
+		{E3DB8DF7-7511-4461-8A48-8EF0CA305A76} = {480840E4-E22C-47D4-B853-CA77AA136F32}
 		{3B97B94E-C973-4F9F-AD6F-ECC1F47D3BCE} = {480840E4-E22C-47D4-B853-CA77AA136F32}
+		{6AA82415-14E2-4E91-A8E7-F310E91994FC} = {CCC3AF6E-AD27-4F95-9C19-6E258267918D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F1AA1C98-C2FB-4953-9B24-2ECC232DED86}

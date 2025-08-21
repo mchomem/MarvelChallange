@@ -1,11 +1,10 @@
-﻿namespace MarvelChallange.Service.Services.External.Interfaces
+﻿namespace MarvelChallange.Service.Services.External.Interfaces;
+
+public interface IMarvelService
 {
-    public interface IMarvelService
-    {
-        public Task<MarvelDto?> GetFullData();
+    public Task<MarvelDto?> GetFullData();
 
-        public Task<string> ExportDataToFile();
+    public Task<string> ExportDataToFile();
 
-        public Task DeleteAllFiles();
-    }
+    public Task DeleteAllFiles();
 }
