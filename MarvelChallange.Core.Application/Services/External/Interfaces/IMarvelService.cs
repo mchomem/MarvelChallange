@@ -1,4 +1,4 @@
-﻿namespace MarvelChallange.Service.Services.External.Interfaces;
+﻿namespace MarvelChallange.Core.Application.Services.External.Interfaces;
 
 public interface IMarvelService
 {

@@ -1,4 +1,4 @@
-﻿namespace MarvelChallange.Service.Services;
+﻿namespace MarvelChallange.Core.Application.Services;
 
 public class MarvelChallangeService : IMarvelChallangeService
 {
@@ -7,7 +7,8 @@ public class MarvelChallangeService : IMarvelChallangeService
         DateTime dateTimeNow = DateTime.Now;            
         string fullFileName = $"{AppSettings.FileExportData.FileOutputDirectory}/{AppSettings.FileExportData.FileName}.{dateTimeNow.ToString("dd.MM.yyyy HH.mm.ss")}.{AppSettings.FileExportData.FileExtension}";
 
-        await Task.Run(() => {
+        await Task.Run(() =>
+        {
             if (!Directory.Exists(AppSettings.FileExportData.FileOutputDirectory))
                 Directory.CreateDirectory(AppSettings.FileExportData.FileOutputDirectory);
         });

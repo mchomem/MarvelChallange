@@ -1,4 +1,4 @@
-﻿namespace MarvelChallange.Domain.Models.External;
+﻿namespace MarvelChallange.Core.Domain.Models.External;
 
 [Serializable]
 public class MarvelDataDto

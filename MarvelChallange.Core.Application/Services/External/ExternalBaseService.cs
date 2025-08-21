@@ -1,4 +1,4 @@
-﻿namespace MarvelChallange.Service.Services.External;
+﻿namespace MarvelChallange.Core.Application.Services.External;
 
 public class ExternalBaseService
 {

@@ -24,7 +24,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\MarvelChallange.Service\MarvelChallange.Service.csproj" />
+		<ProjectReference Include="..\MarvelChallange.Core.Application\MarvelChallange.Core.Application.csproj" />
 	</ItemGroup>
 
 </Project>

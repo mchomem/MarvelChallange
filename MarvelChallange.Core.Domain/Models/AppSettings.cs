@@ -1,4 +1,4 @@
-﻿namespace MarvelChallange.Domain.Models;
+﻿namespace MarvelChallange.Core.Domain.Models;
 
 public static class AppSettings
 {

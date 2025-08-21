@@ -1,11 +1,13 @@
-﻿namespace MarvelChallange.Service.Services.External;
+﻿namespace MarvelChallange.Core.Application.Services.External;
 
 public class MarvelService : ExternalBaseService, IMarvelService
 {
     private readonly IMarvelChallangeService _marvelChallangeService;
 
     public MarvelService(IMarvelChallangeService marvelChallangeService)
-        => _marvelChallangeService = marvelChallangeService;        
+    {
+        _marvelChallangeService = marvelChallangeService;
+    }
 
     public async Task<MarvelDto?> GetFullData()
     {

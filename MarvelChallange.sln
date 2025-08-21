@@ -11,9 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Infrastructure", "2 - I
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Core", "2 - Core", "{480840E4-E22C-47D4-B853-CA77AA136F32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarvelChallange.Domain", "MarvelChallange.Domain\MarvelChallange.Domain.csproj", "{E3DB8DF7-7511-4461-8A48-8EF0CA305A76}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarvelChallange.Core.Domain", "MarvelChallange.Core.Domain\MarvelChallange.Core.Domain.csproj", "{E3DB8DF7-7511-4461-8A48-8EF0CA305A76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarvelChallange.Service", "MarvelChallange.Service\MarvelChallange.Service.csproj", "{3B97B94E-C973-4F9F-AD6F-ECC1F47D3BCE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarvelChallange.Core.Application", "MarvelChallange.Core.Application\MarvelChallange.Core.Application.csproj", "{3B97B94E-C973-4F9F-AD6F-ECC1F47D3BCE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarvelChallange.Infrastructure.IoC", "MarvelChallange.Infrastructure.IoC\MarvelChallange.Infrastructure.IoC.csproj", "{6AA82415-14E2-4E91-A8E7-F310E91994FC}"
 EndProject
