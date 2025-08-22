@@ -3,7 +3,7 @@
 public class MarvelApiClient : IMarvelApiClient
 {
     private readonly HttpClient _httpClient;
-    private IMapper _mapper;
+    private readonly IMapper _mapper;
 
     public MarvelApiClient(HttpClient httpClient, IMapper mapper)
     {
