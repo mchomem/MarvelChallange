@@ -3,10 +3,12 @@
 public class MarvelService : IMarvelService
 {
     private readonly IMarvelApiClient _marvelApiClient;
+    private readonly IConfiguration _configuration;
 
-    public MarvelService(IMarvelApiClient marvelApiClient)
+    public MarvelService(IMarvelApiClient marvelApiClient, IConfiguration configuration)
     {
         _marvelApiClient = marvelApiClient;
+        _configuration = configuration;
     }
 
     public async Task<MarvelDto> GetFullDataAsync()
@@ -30,7 +32,7 @@ public class MarvelService : IMarvelService
     {
         await Task.Run(() =>
         {
-            string fullPath = AppSettings.FileExportData.FileOutputDirectory;
+            string fullPath = _configuration.GetSection("FileExportData:FileOutputDirectory").Value!;
 
             if (Directory.Exists(fullPath))
                 Directory.Delete(fullPath, true);
@@ -40,12 +42,15 @@ public class MarvelService : IMarvelService
     public async Task<string> AddToFileAsync(MarvelDto marvelDto)
     {
         DateTime dateTimeNow = DateTime.Now;
-        string fullFileName = $"{AppSettings.FileExportData.FileOutputDirectory}/{AppSettings.FileExportData.FileName}.{dateTimeNow.ToString("dd.MM.yyyy HH.mm.ss")}.{AppSettings.FileExportData.FileExtension}";
+        var fileOutputDirectory = _configuration.GetSection("FileExportData:FileOutputDirectory").Value;
+        var fileName = _configuration.GetSection("FileExportData:FileName").Value;
+        var fileExtension = _configuration.GetSection("FileExportData:FileExtension").Value;
+        string fullFileName = $"{fileOutputDirectory}/{fileName}.{dateTimeNow.ToString("dd.MM.yyyy HH.mm.ss")}.{fileExtension}";
 
         await Task.Run(() =>
         {
-            if (!Directory.Exists(AppSettings.FileExportData.FileOutputDirectory))
-                Directory.CreateDirectory(AppSettings.FileExportData.FileOutputDirectory);
+            if (!Directory.Exists(_configuration.GetSection("FileExportData:FileOutputDirectory").Value))
+                Directory.CreateDirectory(_configuration.GetSection("FileExportData:FileOutputDirectory").Value!);
         });
 
         using (StreamWriter sw = new StreamWriter(fullFileName, true))

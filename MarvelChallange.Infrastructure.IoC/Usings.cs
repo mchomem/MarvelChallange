@@ -2,7 +2,6 @@
 global using MapsterMapper;
 global using MarvelChallange.Core.Application.Interfaces;
 global using MarvelChallange.Core.Application.Services;
-global using MarvelChallange.Core.Domain.Models;
 global using MarvelChallange.Infrastructure.ExternalService.Clients;
 global using MarvelChallange.Infrastructure.ExternalService.ProfileMappings;
 global using Microsoft.Extensions.Configuration;

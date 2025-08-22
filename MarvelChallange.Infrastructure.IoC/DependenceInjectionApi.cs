@@ -2,7 +2,7 @@
 
 public static class DependenceInjectionApi
 {
-    public static IServiceCollection AddInfrastructureApi(this IServiceCollection services)
+    public static IServiceCollection AddInfrastructureApi(this IServiceCollection services, IConfiguration configuration)
     {
         #region Services
 
@@ -14,7 +14,7 @@ public static class DependenceInjectionApi
 
         services.AddHttpClient<IMarvelApiClient, MarvelApiClient>(client =>
         {
-            client.BaseAddress = new Uri(AppSettings.ExternalServices.MarvelApi.UrlBase);
+            client.BaseAddress = new Uri(configuration.GetSection("ExternalServices:MarvelApi:UrlBase").Value!);
             client.DefaultRequestHeaders.Add("Accept", "application/json");
         });
 
