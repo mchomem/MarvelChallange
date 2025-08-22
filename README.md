@@ -17,6 +17,7 @@ To generate the md5 just access the [MD5 hash](https://www.md5.cz/) website.
 |-----|-----------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
 |  1  | https://(url_server):(port)/MarvelChallange/import  | Imports the data needed to text file                                                                      |
 |  2  | https://(url_server):(port)/MarvelChallange         | Get all data from the Marvel api accessing the end-point https://gateway.marvel.com/v1/public/characters  |
+|  3  | https://(url_server):(port)/MarvelChallange         | Deletes all files exported by route "import"                                                              |
 
 ## Development Team
 
@@ -26,6 +27,7 @@ To generate the md5 just access the [MD5 hash](https://www.md5.cz/) website.
 
 -   Query data directly from the Marvel API;
 -   Imports marvel character data to text file;
+-   Delete the imported data file.
 
 
 ## Technologies Used
