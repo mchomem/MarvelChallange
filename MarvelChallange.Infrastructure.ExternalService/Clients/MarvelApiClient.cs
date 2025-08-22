@@ -11,12 +11,12 @@ public class MarvelApiClient : IMarvelApiClient
         _mapper = mapper;
     }
 
-    public async Task<MarvelChallange.Core.Application.DTOs.MarvelDto> GetFullDataAsync()
+    public async Task<AppDto.MarvelDto> GetFullDataAsync()
     {
         var partialUrl = $"v1/public/characters?apikey={AppSettings.ExternalServices.MarvelApi.Apikey}&ts={AppSettings.ExternalServices.MarvelApi.Timestamp}&hash={AppSettings.ExternalServices.MarvelApi.Hash}";
-        var response = await _httpClient.GetFromJsonAsync<MarvelDto>(partialUrl);
+        var response = await _httpClient.GetFromJsonAsync<InfraDto.MarvelDto>(partialUrl);
 
-        var marvelDto = _mapper.Map<MarvelChallange.Core.Application.DTOs.MarvelDto>(response!);
+        var marvelDto = _mapper.Map<AppDto.MarvelDto>(response!);
         return marvelDto;
     }
 }

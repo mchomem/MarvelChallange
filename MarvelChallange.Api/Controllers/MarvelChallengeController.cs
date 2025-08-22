@@ -18,7 +18,7 @@ public class MarvelChallengeController : ControllerBase
     /// </summary>
     /// <returns>Returns the filled json object.</returns>
     [HttpGet]
-    public async Task<ActionResult<MarvelDto>> GetAsync()
+    public async Task<IActionResult> GetAsync()
     {
         try
         {
@@ -39,7 +39,7 @@ public class MarvelChallengeController : ControllerBase
     /// </summary>
     /// <returns></returns>
     [HttpPost("export-to-file")]
-    public async Task<ActionResult<string>> PostAsync()
+    public async Task<IActionResult> PostAsync()
     {
         try
         {
@@ -60,7 +60,7 @@ public class MarvelChallengeController : ControllerBase
     /// </summary>
     /// <returns></returns>
     [HttpDelete]
-    public async Task<ActionResult> DeleteAsync()
+    public async Task<IActionResult> DeleteAsync()
     {
         try
         {
