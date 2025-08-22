@@ -1,11 +1,10 @@
-﻿namespace MarvelChallange.Core.Domain.Models.External;
+﻿namespace MarvelChallange.Infrastructure.ExternalService.DTOs;
 
-[Serializable]
 public class MarvelDataDto
 {
     [JsonPropertyName("offset")]
     public int Offset { get; set; }
-    
+
     [JsonPropertyName("limit")]
     public int Limit { get; set; }
 
@@ -14,7 +13,7 @@ public class MarvelDataDto
 
     [JsonPropertyName("count")]
     public int Count { get; set; }
-    
+
     [JsonPropertyName("results")]
-    public List<MarvelResultDto> Results { get; set; }
+    public List<MarvelResultDto> Results { get; set; } = new();
 }

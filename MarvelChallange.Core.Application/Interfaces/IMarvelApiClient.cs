@@ -2,5 +2,5 @@
 
 public interface IMarvelApiClient
 {
-    Task<MarvelDto> GetFullDataAsync();
+    Task<MarvelChallange.Core.Application.DTOs.MarvelDto> GetFullDataAsync();
 }

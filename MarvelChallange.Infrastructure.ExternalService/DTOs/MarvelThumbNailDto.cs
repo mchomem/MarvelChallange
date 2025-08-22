@@ -1,6 +1,5 @@
-﻿namespace MarvelChallange.Core.Domain.Models.External;
+﻿namespace MarvelChallange.Infrastructure.ExternalService.DTOs;
 
-[Serializable]
 public class MarvelThumbNailDto
 {
     [JsonPropertyName("path")]

@@ -20,6 +20,16 @@ public static class DependenceInjectionApi
 
         #endregion
 
+        #region Mapster
+
+        var config = TypeAdapterConfig.GlobalSettings;
+        ProfileMapping.RegisterMappings(config);
+        services.AddSingleton(config);
+        services.AddScoped<IMapper, ServiceMapper>();
+        services.AddMapster();
+
+        #endregion
+
         return services;
     }
 
