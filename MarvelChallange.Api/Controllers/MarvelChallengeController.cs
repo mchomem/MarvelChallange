@@ -1,12 +1,21 @@
-namespace MarvelChallange.Api.Controllers;
+﻿namespace MarvelChallange.Api.Controllers;
 
+/// <summary>
+/// Controller responsible for handling requests related to Marvel API data retrieval, file export, and file deletion.
+/// </summary>
 [ApiController]
 [Route("[controller]")]
 public class MarvelChallengeController : ControllerBase
 {
     private readonly IMarvelService _marvelService;
     private readonly ILogger<MarvelChallengeController> _logger;
+    private readonly string _defaultTimeFormat = "dd/MM/yyyy HH:mm:ss";
 
+    /// <summary>
+    /// Constructor for MarvelChallengeController. Initializes the logger and Marvel service dependencies.
+    /// </summary>
+    /// <param name="logger">The logger instance for logging information and errors.</param>
+    /// <param name="marvelSerice">The Marvel service instance for handling Marvel API data operations.</param>
     public MarvelChallengeController(ILogger<MarvelChallengeController> logger, IMarvelService marvelSerice)
     {
         _logger = logger;
@@ -22,14 +31,16 @@ public class MarvelChallengeController : ControllerBase
     {
         try
         {
-            _logger.LogInformation($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: GET method. Action taken.");
+            var logMessage = $"[{DateTime.Now.ToString(_defaultTimeFormat)}]: GET method. Action taken.";
+            _logger.LogInformation(logMessage);
             var marvelDto = await _marvelService.GetFullDataAsync();
 
             return Ok(marvelDto);
         }
         catch (Exception e)
         {
-            _logger.LogError($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: GET method. Action taken. ERROR: {e.Message}");
+            var logMessage = $"[{DateTime.Now.ToString(_defaultTimeFormat)}]: GET method. Action taken. ERROR: {e.Message}";
+            _logger.LogError(e, logMessage);
             return StatusCode(500, e.Message);
         }
     }
@@ -44,13 +55,15 @@ public class MarvelChallengeController : ControllerBase
         try
         {
             string fullPath = await _marvelService.ExportDataToFileAsync();
-            _logger.LogInformation($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: POST method. Action taken.");
+            var logMessage = $"[{DateTime.Now.ToString(_defaultTimeFormat)}]: POST method. Action taken.";
+            _logger.LogInformation(logMessage);
             var message = new { message = $"Generated text file at {fullPath}" };
             return Ok(message);
         }
         catch (Exception e)
         {
-            _logger.LogError($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: GET method. Action taken. ERROR: {e.Message}");
+            var logMessage = $"[{DateTime.Now.ToString(_defaultTimeFormat)}]: POST method. Action taken. ERROR: {e.Message}";
+            _logger.LogError(e, logMessage);
             return StatusCode(500, e.Message);
         }
     }
@@ -64,13 +77,15 @@ public class MarvelChallengeController : ControllerBase
     {
         try
         {
-            _logger.LogInformation($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: DELETE method. Action taken.");
+            var logMessage = $"[{DateTime.Now.ToString(_defaultTimeFormat)}]: DELETE method. Action taken.";
+            _logger.LogInformation(logMessage);
             await _marvelService.DeleteAllFilesAsync();
             return Ok(new { message = "Export files deleted." });
         }
         catch (Exception e)
         {
-            _logger.LogError($"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}]: DELETE method. Action taken. ERROR: {e.Message}");
+            var logMessage = $"[{DateTime.Now.ToString(_defaultTimeFormat)}]: DELETE method. Action taken. ERROR: {e.Message}";
+            _logger.LogError(e, logMessage);
             return StatusCode(500, e.Message);
         }
     }
