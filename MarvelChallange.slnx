@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/0 - Test/">
+    <Project Path="MarvelChallange.Test/MarvelChallange.Test.csproj" />
+  </Folder>
+  <Folder Name="/1 - Core/">
+    <Project Path="MarvelChallange.Core.Application/MarvelChallange.Core.Application.csproj" />
+    <Project Path="MarvelChallange.Core.Domain/MarvelChallange.Core.Domain.csproj" />
+  </Folder>
+  <Folder Name="/2 - Infrastructure/">
+    <Project Path="MarvelChallange.Infrastructure.ExternalService/MarvelChallange.Infrastructure.ExternalService.csproj" />
+    <Project Path="MarvelChallange.Infrastructure.IoC/MarvelChallange.Infrastructure.IoC.csproj" />
+  </Folder>
+  <Folder Name="/3 - Presentation/">
+    <Project Path="MarvelChallange.Api/MarvelChallange.Api.csproj" />
+  </Folder>
+</Solution>
